@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../services/auth_service.dart';
 import '../screens/welcome_screen.dart';
 import '../screens/home_page.dart';
-import '../screens/home_page_Demo.dart';
+import '../screens/home_page_demo.dart';
 
 class AuthGate extends StatelessWidget {
   const AuthGate({super.key});
