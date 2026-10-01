@@ -7,7 +7,6 @@ import '../dialogs/nueva_nota_dialog.dart';
 import '../dialogs/editar_producto_dialog.dart';
 import '../dialogs/calculadora_dialog.dart';
 
-
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -16,7 +15,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   void mostrarCalculadora() {
     showModalBottomSheet(
       context: context,
@@ -43,15 +41,12 @@ class _HomePageState extends State<HomePage> {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(
-              maxWidth: 400,
-            ),
+            constraints: const BoxConstraints(maxWidth: 400),
             child: Padding(
               padding: const EdgeInsets.only(left: 20, top: 20, right: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-
                   // ================= BOTONES =================
                   Row(
                     children: [
@@ -86,7 +81,8 @@ class _HomePageState extends State<HomePage> {
                             backgroundColor: Colors.blue,
                             foregroundColor: Colors.white,
                           ),
-                          onPressed: () => mostrarDialogAgregarProducto(context),
+                          onPressed: () =>
+                              mostrarDialogAgregarProducto(context),
                           icon: const Icon(Icons.shopping_cart),
                           label: const Text("Compra"),
                         ),
@@ -144,8 +140,11 @@ class _HomePageState extends State<HomePage> {
                     child: StreamBuilder(
                       stream: NotasService.obtenerNota(),
                       builder: (context, snapshot) {
-                        if (snapshot.connectionState == ConnectionState.waiting) {
-                          return const Center(child: CircularProgressIndicator());
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
                         }
 
                         if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
@@ -164,7 +163,9 @@ class _HomePageState extends State<HomePage> {
                               margin: const EdgeInsets.only(bottom: 12),
                               padding: const EdgeInsets.all(12),
                               decoration: BoxDecoration(
-                                color: Color(data['color'] ?? Colors.yellow.value),
+                                color: Color(
+                                  data['color'] ?? Colors.yellow.value,
+                                ),
                                 borderRadius: BorderRadius.circular(16),
                                 boxShadow: [
                                   BoxShadow(
@@ -189,7 +190,10 @@ class _HomePageState extends State<HomePage> {
                                   Align(
                                     alignment: Alignment.bottomRight,
                                     child: IconButton(
-                                      icon: const Icon(Icons.delete, color: Colors.red),
+                                      icon: const Icon(
+                                        Icons.delete,
+                                        color: Colors.red,
+                                      ),
                                       onPressed: () {
                                         NotasService.eliminarNota(doc.id);
                                       },

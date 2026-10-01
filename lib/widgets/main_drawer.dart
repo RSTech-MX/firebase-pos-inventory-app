@@ -26,7 +26,6 @@ class MainDrawer extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-
                   const Text(
                     'Menu Principal',
                     style: TextStyle(
@@ -51,9 +50,9 @@ class MainDrawer extends StatelessWidget {
                         );
                       }
 
-                      final data = snapshot.data!.data() as Map<String, dynamic>;
-                      final nombreUsuario =
-                          data['nombre_usuario'] ?? 'usuario';
+                      final data =
+                          snapshot.data!.data() as Map<String, dynamic>;
+                      final nombreUsuario = data['nombre_usuario'] ?? 'usuario';
 
                       return Text(
                         '@$nombreUsuario',
@@ -81,9 +80,7 @@ class MainDrawer extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (_) => const PerfilPage(),
-                      ),
+                      MaterialPageRoute(builder: (_) => const PerfilPage()),
                     );
                   },
                   icon: const Icon(Icons.person),
@@ -131,9 +128,7 @@ class MainDrawer extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (_) => RegistrarCompraPage(),
-                      ),
+                      MaterialPageRoute(builder: (_) => RegistrarCompraPage()),
                     );
                   },
                   icon: const Icon(Icons.note_add),
@@ -145,7 +140,7 @@ class MainDrawer extends StatelessWidget {
           //---------------------------------------//
 
           //------ Boton Registra Nueva SET ------//
-          Padding(
+          /*Padding(
             padding: const EdgeInsets.only(left: 30, top: 20),
             child: Align(
               alignment: Alignment.centerLeft,
@@ -166,7 +161,7 @@ class MainDrawer extends StatelessWidget {
                 ),
               ),
             ),
-          ),
+          ),*/
           //---------------------------------------//
 
           //------ Boton Inventario ------//
@@ -186,7 +181,7 @@ class MainDrawer extends StatelessWidget {
                       ),
                     );
                   },
-                  icon: const Icon(Icons.inventory_2),
+                  icon: const Icon(Icons.fact_check),
                   label: const Text("Inventario"),
                 ),
               ),
@@ -206,12 +201,10 @@ class MainDrawer extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (_) => UsuariosPage(),
-                      ),
+                      MaterialPageRoute(builder: (_) => UsuariosPage()),
                     );
                   },
-                  icon: const Icon(Icons.inventory_2),
+                  icon: const Icon(Icons.group),
                   label: const Text("Usuarios"),
                 ),
               ),
@@ -237,8 +230,8 @@ class MainDrawer extends StatelessWidget {
               ),
             ),
           ),
-          //---------------------------------------//
 
+          //---------------------------------------//
           const Spacer(),
 
           //------ Cerrar sesión ------//
@@ -261,10 +254,8 @@ class MainDrawer extends StatelessWidget {
                     //Regresar a Welcome y borrar historial
                     Navigator.pushAndRemoveUntil(
                       context,
-                      MaterialPageRoute(
-                        builder: (_) => const WelcomeScreen(),
-                      ),
-                          (route) => false,
+                      MaterialPageRoute(builder: (_) => const WelcomeScreen()),
+                      (route) => false,
                     );
                   },
                   icon: const Icon(Icons.logout),

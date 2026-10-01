@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
+
+// Importa tu CorreoProvider
+import 'providers/correo_provider.dart';
+import 'providers/perfil_provider.dart';
 
 // Screens
 import 'screens/auth_gate.dart';
-import 'screens/home_page.dart';
+import 'screens/home_page_demo.dart';
 import 'screens/welcome_screen.dart';
 
 void main() async {
@@ -17,20 +22,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Pruebas de Base de Datos',
-      debugShowCheckedModeBanner: false,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => CorreoProvider()),
+        ChangeNotifierProvider(create: (_) => PerfilProvider()),
+      ],
+      child: MaterialApp(
+        title: 'Pruebas de Base de Datos',
+        debugShowCheckedModeBanner: false,
 
-      // 🔥 ÚNICO punto de entrada
-      home: const AuthGate(),
+        home: const AuthGate(),
 
-      //initialRoute: '/',
-
-      routes: {
-        '/home': (context) => const HomePage(),
-        '/welcome': (context) => const WelcomeScreen(),
-      },
+        //initialRoute: '/',
+        routes: {
+          '/home': (context) => const HomePageDemo(),
+          '/welcome': (context) => const WelcomeScreen(),
+        },
+      ),
     );
   }
 }
-
